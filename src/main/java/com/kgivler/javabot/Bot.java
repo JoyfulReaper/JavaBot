@@ -23,27 +23,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.kgivler.JavaBot;
+package com.kgivler.javabot;
 
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import javax.security.auth.login.LoginException;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
+import java.util.EnumSet;
 
-public class Program {
-    public static void main (String[] args) throws LoginException, IOException {
-        System.out.println("JavaBot Thing");
+public class Bot {
+    public Bot() throws LoginException
+    {
+        EnumSet<GatewayIntent> intents = EnumSet.of(
+                GatewayIntent.GUILD_MESSAGES,
+                GatewayIntent.GUILD_MEMBERS,
+                GatewayIntent.GUILD_PRESENCES
+        );
 
-        // Setup Properties
-        FileInputStream propFile = new FileInputStream("JavaBot.properties");
-        Properties p = new Properties(System.getProperties());
-        p.load(propFile);
-        System.setProperties(p);
+        JDABuilder.createDefault(System.getProperty("token"), intents)
+                .setActivity(Activity.playing("IntelliJ"))
+                .setStatus(OnlineStatus.ONLINE)
+                .addEventListeners(new Listener())
+                .build();
 
-        Bot bot = new Bot();
 
     }
 }

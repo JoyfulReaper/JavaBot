@@ -23,11 +23,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.kgivler.JavaBot;
+package com.kgivler.javabot;
 
-import com.kgivler.JavaBot.command.CommandContext;
-import com.kgivler.JavaBot.command.ICommand;
-import com.kgivler.JavaBot.command.commands.PingCommand;
+import com.kgivler.javabot.command.CommandContext;
+import com.kgivler.javabot.command.ICommand;
+import com.kgivler.javabot.command.commands.PingCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import javax.annotation.Nullable;
