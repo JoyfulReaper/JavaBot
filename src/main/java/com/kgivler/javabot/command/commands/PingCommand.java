@@ -23,10 +23,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.kgivler.JavaBot.command.commands;
+package com.kgivler.javabot.command.commands;
 
-import com.kgivler.JavaBot.command.CommandContext;
-import com.kgivler.JavaBot.command.ICommand;
+import com.kgivler.javabot.command.CommandContext;
+import com.kgivler.javabot.command.ICommand;
 import net.dv8tion.jda.api.JDA;
 
 public class PingCommand implements ICommand {
