@@ -23,27 +23,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.kgivler.JavaBot;
+package com.kgivler.JavaBot.command.commands;
 
-import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.Activity;
+import com.kgivler.JavaBot.command.CommandContext;
+import com.kgivler.JavaBot.command.ICommand;
+import net.dv8tion.jda.api.JDA;
 
-import javax.security.auth.login.LoginException;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
+public class PingCommand implements ICommand {
+    @Override
+    public void handle(CommandContext ctx) {
+        JDA jda = ctx.getJDA();
 
-public class Program {
-    public static void main (String[] args) throws LoginException, IOException {
-        System.out.println("JavaBot Thing");
+        jda.getRestPing().queue(
+                (ping) -> ctx.getChannel()
+                .sendMessageFormat("Rest ping: %sms\nWS ping: %sms", ping, jda.getGatewayPing()).queue()
+        );
+    }
 
-        // Setup Properties
-        FileInputStream propFile = new FileInputStream("JavaBot.properties");
-        Properties p = new Properties(System.getProperties());
-        p.load(propFile);
-        System.setProperties(p);
-
-        Bot bot = new Bot();
-
+    @Override
+    public String getName() {
+        return "ping";
     }
 }
