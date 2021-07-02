@@ -36,6 +36,10 @@ import java.util.EnumSet;
 public class Bot {
     public Bot() throws LoginException
     {
+    }
+
+    public void start() throws LoginException
+    {
         EnumSet<GatewayIntent> intents = EnumSet.of(
                 GatewayIntent.GUILD_MESSAGES,
                 GatewayIntent.GUILD_MEMBERS,
@@ -47,7 +51,5 @@ public class Bot {
                 .setStatus(OnlineStatus.ONLINE)
                 .addEventListeners(new Listener())
                 .build();
-
-
     }
 }
