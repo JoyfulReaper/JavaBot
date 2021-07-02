@@ -30,17 +30,24 @@ import java.io.*;
 import java.util.Properties;
 
 public class Program {
-    public static void main (String[] args) throws LoginException, IOException {
+    public static void main (String[] args) throws IOException {
+        // TODO Write a helper class to making colored text easier
         System.out.println(ConsoleColor.ANSI_RED + "JavaBot" + ConsoleColor.ANSI_RESET);
         System.out.println(ConsoleColor.ANSI_BLUE + "MIT License");
         System.out.println("Copyright(c) 2021 Kyle Givler (JoyfulReaper)");
         System.out.println("https://github.com/JoyfulReaper\n\n" + ConsoleColor.ANSI_RESET);
 
-        // Setup Properties
-        FileInputStream propFile = new FileInputStream("JavaBot.properties");
-        Properties p = new Properties(System.getProperties());
-        p.load(propFile);
-        System.setProperties(p);
+        try {
+            // Setup Properties
+            FileInputStream propFile = new FileInputStream("JavaBot.properties");
+            Properties p = new Properties(System.getProperties());
+            p.load(propFile);
+            System.setProperties(p);
+        } catch (IOException ex)
+        {
+            System.out.println("Unable to load JavaBot.properties");
+            System.exit(1);
+        }
 
         try {
             Bot bot = new Bot();
@@ -50,6 +57,7 @@ public class Program {
             if(e.getClass().isAssignableFrom(LoginException.class))
             {
                 System.out.println("Unable to log in, please verify your token is correct!");
+                System.exit(2);
             }
         }
 
