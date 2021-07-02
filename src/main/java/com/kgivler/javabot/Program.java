@@ -25,17 +25,20 @@ SOFTWARE.
 
 package com.kgivler.javabot;
 
+import com.kgivler.javabot.command.ConsoleHelper;
+
 import javax.security.auth.login.LoginException;
 import java.io.*;
 import java.util.Properties;
 
 public class Program {
     public static void main (String[] args) throws IOException {
-        // TODO Write a helper class to making colored text easier
-        System.out.println(ConsoleColor.ANSI_RED + "JavaBot" + ConsoleColor.ANSI_RESET);
-        System.out.println(ConsoleColor.ANSI_BLUE + "MIT License");
-        System.out.println("Copyright(c) 2021 Kyle Givler (JoyfulReaper)");
-        System.out.println("https://github.com/JoyfulReaper\n\n" + ConsoleColor.ANSI_RESET);
+
+        // Print intro
+        ConsoleHelper.colorWriteLine(ConsoleColor.ANSI_RED, "JavaBot");
+        ConsoleHelper.colorWriteLine(ConsoleColor.ANSI_BLUE, "MIT License");
+        ConsoleHelper.colorWriteLine(ConsoleColor.ANSI_BLUE, "Copyright(c) 2021 Kyle Givler (JoyfulReaper)");
+        ConsoleHelper.colorWriteLine(ConsoleColor.ANSI_BLUE, "https://github.com/JoyfulReaper\n\n");
 
         try {
             // Setup Properties
@@ -50,6 +53,7 @@ public class Program {
         }
 
         try {
+            // Start the bot
             Bot bot = new Bot();
             bot.start();
         } catch (Exception e)
@@ -62,7 +66,7 @@ public class Program {
         }
 
         while(true) {
-            System.out.println("Enter 'Q' to quit!");
+            ConsoleHelper.colorWriteLine(ConsoleColor.ANSI_YELLOW, "Enter 'Q' to quit!");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             var input = br.readLine();
 

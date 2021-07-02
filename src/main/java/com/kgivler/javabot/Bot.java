@@ -43,7 +43,8 @@ public class Bot {
         EnumSet<GatewayIntent> intents = EnumSet.of(
                 GatewayIntent.GUILD_MESSAGES,
                 GatewayIntent.GUILD_MEMBERS,
-                GatewayIntent.GUILD_PRESENCES
+                GatewayIntent.GUILD_PRESENCES,
+                GatewayIntent.GUILD_EMOJIS
         );
 
         JDABuilder.createDefault(System.getProperty("token"), intents)
