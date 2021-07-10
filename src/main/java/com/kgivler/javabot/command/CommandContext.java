@@ -41,6 +41,11 @@ public class CommandContext {
         this._args = _args;
     }
 
+    public List<String> getArgs()
+    {
+        return _args;
+    }
+
     public Guild getGuild() {
         return this.getEvent().getGuild();
     }
